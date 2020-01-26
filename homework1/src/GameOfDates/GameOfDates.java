@@ -3,6 +3,7 @@ package GameOfDates;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class GameOfDates {
 
@@ -49,7 +50,7 @@ public class GameOfDates {
         } while (answerUser!=yearEvents);
         System.out.printf("Congratulations, %s! %n", nameUser);
         bubbleSort(answersUser);
-        System.out.printf("Your numbers: %s%n", String.join(", ", Arrays.stream(answersUser).mapToObj(String::valueOf).toArray(String[]::new)));
+        System.out.printf("Your numbers: %s%n", String.join(", ", Arrays.stream(answersUser).mapToObj(String::valueOf).collect(Collectors.joining(", "))));
     }
 
     private static int[] addToArray (int[] answerUser,int newAnswer ){
