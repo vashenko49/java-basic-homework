@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Random;
 
 public class Human {
@@ -197,5 +198,21 @@ public class Human {
         }
         stringBuilder.append('}');
         return stringBuilder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return year == human.year &&
+                name.equals(human.name) &&
+                surname.equals(human.surname) &&
+                family.equals(human.family);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
     }
 }
