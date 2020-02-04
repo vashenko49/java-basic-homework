@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Pet {
     private String species;
     private String nickname;
@@ -41,6 +44,25 @@ public class Pet {
 
     public int getTrickLevel() {
         return trickLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return age == pet.age &&
+                trickLevel == pet.trickLevel &&
+                species.equals(pet.species) &&
+                nickname.equals(pet.nickname) &&
+                Arrays.equals(habits, pet.habits);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(species, nickname, age, trickLevel);
+        result = 31 * result + Arrays.hashCode(habits);
+        return result;
     }
 
     public void setTrickLevel(int trickLevel) {

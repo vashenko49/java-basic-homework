@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Family {
     private final int COUNT_MEMBERS = 5;
     private Human mother;
@@ -101,6 +104,25 @@ public class Family {
         Human[] newArray = new Human[newLength];
         System.arraycopy(children, 0, newArray, 0, newLength);
         children = newArray;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return indexArrayChild == family.indexArrayChild &&
+                mother.equals(family.mother) &&
+                father.equals(family.father) &&
+                Arrays.equals(children, family.children) &&
+                pet.equals(family.pet);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(father, pet, indexArrayChild);
+        result = 31 * result + Arrays.hashCode(children);
+        return result;
     }
 
     @Override

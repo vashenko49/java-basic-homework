@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -206,13 +207,17 @@ public class Human {
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
         return year == human.year &&
+                iq == human.iq &&
                 name.equals(human.name) &&
                 surname.equals(human.surname) &&
+                Arrays.equals(schedule, human.schedule) &&
                 family.equals(human.family);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname);
+        int result = Objects.hash(name, surname, year, iq, family);
+        result = 31 * result + Arrays.hashCode(schedule);
+        return result;
     }
 }
