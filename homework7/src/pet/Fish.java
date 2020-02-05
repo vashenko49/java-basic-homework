@@ -1,6 +1,6 @@
 package pet;
 
-public class Fish extends Pet implements IPet {
+public class Fish extends Pet {
     {
         setSpecies(Species.Fish);
     }
@@ -15,11 +15,6 @@ public class Fish extends Pet implements IPet {
 
     @Override
     public void respond() {
-
-    }
-
-    @Override
-    public void foul() {
 
     }
 }

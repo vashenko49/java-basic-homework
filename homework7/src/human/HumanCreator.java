@@ -1,5 +1,5 @@
 package human;
 
 public interface HumanCreator {
-    public void bornChild();
+    public Human bornChild();
 }
