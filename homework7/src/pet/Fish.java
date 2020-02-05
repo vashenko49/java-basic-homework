@@ -15,6 +15,10 @@ public class Fish extends Pet {
 
     @Override
     public void respond() {
-
+        if (getNickname() != null) {
+            System.out.println("Привет, хозяин. Я - " + getSpecies() + " " + getNickname() + ". Я соскучился!");
+        } else {
+            System.out.println("Привет, хозяин. Я " + getSpecies() + " и я соскучился! Дай мне имя!");
+        }
     }
 }
