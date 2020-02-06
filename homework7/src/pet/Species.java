@@ -1,10 +1,10 @@
 package pet;
 
 public enum Species {
-    Fish(false, false, 0),
-    DomesticCat(false, true, 4),
-    Dog(false, true, 4),
-    RoboCat(false, false, 4),
+    FISH(false, false, 0),
+    DOMESTICCAT(false, true, 4),
+    DOG(false, true, 4),
+    ROBOCAT(false, false, 4),
     UNKNOWN(false,false,-1);
 
     private boolean canFly;

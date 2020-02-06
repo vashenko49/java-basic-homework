@@ -1,10 +1,6 @@
 package pet;
 
-public class Dog extends Pet implements IPet {
-    {
-        setSpecies(Species.Dog);
-    }
-
+public class Dog extends Pet implements FoulingPet {
     public Dog(String nickname) {
         super(nickname);
     }

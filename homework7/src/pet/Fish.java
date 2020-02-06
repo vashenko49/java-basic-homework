@@ -1,10 +1,6 @@
 package pet;
 
 public class Fish extends Pet {
-    {
-        setSpecies(Species.Fish);
-    }
-
     public Fish(String nickname) {
         super(nickname);
     }

@@ -1,5 +1,5 @@
 package pet;
 
-public interface IPet {
+public interface FoulingPet {
     public void foul();
 }

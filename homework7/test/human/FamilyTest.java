@@ -114,7 +114,7 @@ public class FamilyTest {
         family.addChild(child);
         family.setPet(pet);
         //when
-        String expectResult = "Family{mother=Human{name='Lou'surname='Loulovich'year='35'iq='0'}'father=Human{name='Gogo'surname='Loulovich'year='40'iq='0'}'children={Human{name='Vovo'surname='Loulovich'year='18'iq='0'}}, 'pet={nickname='Gogo'age='2'trickLevel='60'habits='[very lazy]'species='{species='Dog'hasFur='true'canFly='false'numberOfLegs='4'}''}";
+        String expectResult = "Family{mother=Human{name='Lou'surname='Loulovich'year='35'iq='0'}'father=Human{name='Gogo'surname='Loulovich'year='40'iq='0'}'children={Human{name='Vovo'surname='Loulovich'year='18'iq='0'}}, 'pet={nickname='Gogo'age='2'trickLevel='60'habits='[very lazy]'species='{species='DOG'hasFur='true'canFly='false'numberOfLegs='4'}''}";
         String actualResult = family.toString();
         //than
         Assert.assertEquals(expectResult, actualResult);

@@ -10,12 +10,16 @@ public abstract class Pet {
     private int trickLevel;
     private String[] habits;
 
+    {
+        species = Species.valueOf(this.getClass().getSimpleName().toUpperCase());
+    }
+
 
     public Pet(String nickname) {
         this.nickname = nickname;
     }
 
-    public Pet( String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
