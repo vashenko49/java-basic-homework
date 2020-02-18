@@ -4,6 +4,7 @@ import human.Human;
 import pet.Pet;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -59,40 +60,43 @@ public class FamilyService {
     }
 
     public boolean deleteFamilyByIndex(int index) {
-        return familyDao.deleteFamilyByIndex(index);
+        if (index < familyDao.getAllFamilies().size()) {
+            return familyDao.deleteFamilyByIndex(index);
+        }
+        return false;
     }
 
     public Family bornChild(Family family, String male, String female) {
         family.bornChild(male, female);
         return family;
     }
-    public  Family adoptChild(Family family, Human human){
+
+    public Family adoptChild(Family family, Human human) {
         family.addChild(human);
         return family;
     }
-    public List<Family> deleteAllChildrenOlderThen(int age){
+
+    public List<Family> deleteAllChildrenOlderThen(int age) {
         for (Family family : familyDao.getAllFamilies()) {
-            for (Human child : family.getChildren()) {
-                if(child.getYear()>age){
-                    family.deleteChild(child);
-                    familyDao.saveFamily(family);
-                }
-            }
+            family.getChildren().removeIf(human -> human.getYear() > age);
         }
         return familyDao.getAllFamilies();
     }
 
-    public int count(){
+    public int count() {
         return familyDao.getAllFamilies().size();
     }
-    public Family getFamilyByIndex(int index){
-        return  familyDao.getFamilyByIndex(index);
+
+    public Family getFamilyByIndex(int index) {
+        return familyDao.getFamilyByIndex(index);
     }
-    public Set<Pet> getPets(int index){
-        return familyDao.getFamilyByIndex(index).getPets();
-    }
-    public void  addPet(int index, Pet newPet){
+
+    public void addPet(int index, Pet newPet) {
         familyDao.getFamilyByIndex(index).addPet(newPet);
+    }
+
+    public Set<Pet> getPets(int index) {
+        return familyDao.getFamilyByIndex(index).getPets();
     }
 
 
