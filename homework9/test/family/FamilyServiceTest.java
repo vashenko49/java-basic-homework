@@ -313,10 +313,10 @@ public class FamilyServiceTest {
         Set<String> habits = new HashSet<>();
         habits.add("very lazy");
         Pet pet = new Dog("Gogo", 2, 60, habits);
-        familyService.addPet(0, pet);
         Set<Pet> petSet = new HashSet<>();
         petSet.add(pet);
         //when
+        familyService.addPet(0, pet);
         boolean result = familyService.getPets(0).equals(petSet);
         //than
         Assert.assertTrue(result);
