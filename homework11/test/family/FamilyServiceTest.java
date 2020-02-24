@@ -27,7 +27,9 @@ public class FamilyServiceTest {
 
     @Before
     public void resetFamilies() {
-        for (Iterator<Family> iterator = familyDAO.getAllFamilies().iterator(); iterator.hasNext(); ) {
+        List<Family> allFamilies = familyDAO.getAllFamilies();
+        Iterator<Family> iterator = allFamilies.iterator();
+        while (iterator.hasNext()){
             iterator.next();
             iterator.remove();
         }
