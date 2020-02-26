@@ -20,14 +20,6 @@ public class Human {
     private Map<DayOfWeek, String> schedule;
     private Family family;
 
-    static {
-        System.out.println("Loading a new class human.Human");
-    }
-
-    {
-        System.out.println("A new human.Human object is created");
-    }
-
     public String getName() {
         return name;
     }
@@ -213,6 +205,10 @@ public class Human {
             firstNameAndLastName += " " + surname;
         }
         return firstNameAndLastName;
+    }
+
+    public String prettyFormat() {
+        return toString();
     }
 
     @Override

@@ -3,8 +3,6 @@ package family;
 import human.*;
 import pet.Pet;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.*;
 
 public class Family implements HumanCreator {
@@ -14,15 +12,10 @@ public class Family implements HumanCreator {
     private Random random;
     private Set<Pet> pets;
 
-    static {
-        System.out.println("Loading a new class family.Family");
-    }
-
     {
         random = new Random();
         children = new ArrayList<>();
         pets = new HashSet<>();
-        System.out.println("A new family.Family object is created");
     }
 
     public Family(Human mother, Human father) {
@@ -108,6 +101,31 @@ public class Family implements HumanCreator {
                 "}";
     }
 
+    public String prettyFormat() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("family:\n");
+        stringBuilder.append("\tmother: ");
+        stringBuilder.append(getMother().prettyFormat());
+        stringBuilder.append("\n");
+        stringBuilder.append("\tfather: ");
+        stringBuilder.append(getFather().prettyFormat());
+        stringBuilder.append("\n");
+        stringBuilder.append("\t\tchildren: \n");
+        for (Human child : getChildren()) {
+            if (child instanceof Woman) {
+                stringBuilder.append("\t\t\tgirl: ");
+            } else {
+                stringBuilder.append("\t\t\tboy: ");
+            }
+            stringBuilder.append(child.prettyFormat());
+            stringBuilder.append("\n");
+        }
+        stringBuilder.append("\tpets: ");
+        stringBuilder.append(pets.toString());
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
+    }
+
     @Override
     protected void finalize() throws Throwable {
         System.out.println(toString());
@@ -133,7 +151,7 @@ public class Family implements HumanCreator {
     }
 
     @Override
-    public Human bornChild(String male, String female) {
+    public Human bornChild(String female, String male) {
         Human newHuman;
         if (random.nextBoolean()) {
             newHuman = new Woman(female, father.getSurname(), System.currentTimeMillis());

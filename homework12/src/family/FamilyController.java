@@ -5,6 +5,8 @@ import pet.Pet;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class FamilyController {
     private FamilyService familyService;
@@ -55,7 +57,7 @@ public class FamilyController {
     public Family adoptChild(Family family, Human human) {
         Family updatedFamily = family;
         try {
-            updatedFamily =  familyService.adoptChild(family, human);
+            updatedFamily = familyService.adoptChild(family, human);
         } catch (FamilyOverflowException ex) {
             System.out.println("Count number family = " + ex.getCountMembersFamily());
             ex.printStackTrace();
@@ -81,5 +83,9 @@ public class FamilyController {
 
     public void addPet(int index, Pet newPet) {
         familyService.addPet(index, newPet);
+    }
+
+    public String toString() {
+        return familyService.toString();
     }
 }

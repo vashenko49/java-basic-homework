@@ -73,7 +73,7 @@ public class FamilyService {
     public List<Family> deleteAllChildrenOlderThen(int age) {
         return  familyDao.getAllFamilies()
                 .stream()
-                .peek(f->f.getChildren().removeIf(h->h.getYear()>age))
+                .peek(f->f.getChildren().removeIf(h->h.getYear()<age))
                 .collect(Collectors.toList());
     }
 
@@ -91,5 +91,13 @@ public class FamilyService {
 
     public Set<Pet> getPets(int index) {
         return familyDao.getFamilyByIndex(index).getPets();
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Family family : getAllFamilies()) {
+            stringBuilder.append(family.prettyFormat());
+        }
+        return stringBuilder.toString();
     }
 }

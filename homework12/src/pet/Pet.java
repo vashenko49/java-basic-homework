@@ -1,6 +1,5 @@
 package pet;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 
@@ -84,6 +83,10 @@ public abstract class Pet {
     }
 
     public abstract void respond();
+
+    public String prettyFormat() {
+        return toString();
+    }
 
     @Override
     public String toString() {
