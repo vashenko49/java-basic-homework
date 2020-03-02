@@ -6,8 +6,6 @@ import pet.Pet;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class FamilyController {
     private FamilyService familyService;
@@ -94,12 +92,11 @@ public class FamilyController {
         return familyService.toString();
     }
 
-    public boolean recoverData() {
-        return familyService.recoverData();
+    public boolean loadData() {
+        return familyService.loadData();
     }
 
-    public boolean loadData() {
-        Logger.info("loadData");
-        return familyService.loadData();
+    public boolean saveDataToFile() {
+        return familyService.saveDataToFile();
     }
 }

@@ -13,7 +13,7 @@ public interface FamilyDAO {
 
     public void saveFamily(Family family);
 
-    public boolean loadData();
+    public boolean saveDataToFile();
 
-    public boolean recoverData();
+    public boolean loadData();
 }

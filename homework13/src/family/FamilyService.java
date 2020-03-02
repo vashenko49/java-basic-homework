@@ -100,12 +100,13 @@ public class FamilyService {
         return stringBuilder.toString();
     }
 
-    public boolean recoverData() {
-        return familyDao.recoverData();
-    }
-
     public boolean loadData() {
         return familyDao.loadData();
     }
+
+    public boolean saveDataToFile() {
+        return familyDao.saveDataToFile();
+    }
+
 
 }

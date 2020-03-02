@@ -1,12 +1,9 @@
 package consoleApp;
 
 import family.*;
-import human.ChildName;
 import human.Human;
 import human.Man;
 import human.Woman;
-import pet.Dog;
-import pet.Pet;
 
 import java.util.*;
 
@@ -96,7 +93,7 @@ public class ConsoleApp {
     }
 
     private void saveData() {
-        if (familyController.loadData()) {
+        if (familyController.saveDataToFile()) {
             System.out.println("Сохранение удачное");
         } else {
             System.out.println("Сохранение провалилось");
@@ -112,7 +109,7 @@ public class ConsoleApp {
     }
 
     private void recoverData() {
-        if (familyController.recoverData()) {
+        if (familyController.loadData()) {
             System.out.println("Восстановление удачное");
         } else {
             System.out.println("Восстановление провалилось");

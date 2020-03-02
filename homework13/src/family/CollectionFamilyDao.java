@@ -50,7 +50,7 @@ public final class CollectionFamilyDao implements FamilyDAO {
     }
 
     @Override
-    public boolean loadData() {
+    public boolean saveDataToFile() {
         if (families.size() > 0) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
@@ -76,13 +76,18 @@ public final class CollectionFamilyDao implements FamilyDAO {
     }
 
     @Override
-    public boolean recoverData() {
+    public boolean loadData() {
         File file = new File("families");
 
         if (file.isFile()) {
             try (InputStream inputStream = new FileInputStream(file)) {
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                families.addAll((ArrayList<Family>) objectInputStream.readObject());
+                List<Family> familyList = (ArrayList<Family>) objectInputStream.readObject();
+                for (Family family : familyList) {
+                    if (!families.contains(family)) {
+                        families.add(family);
+                    }
+                }
                 Logger.info("recoverData");
             } catch (IOException | ClassNotFoundException e) {
                 Logger.error("Ошибка восстановления");
